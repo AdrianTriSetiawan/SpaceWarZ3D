@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://MainMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MegatransdemoRegular-8M9B0.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://menu.gd" type="Script" id=3]
+[ext_resource path="res://Main.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sci-Fi-Dramatic-Theme(chosic.com).wav" type="AudioStream" id=5]
+[ext_resource path="res://SSFONTGAME.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 125
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.00392157, 0.00392157, 0.00392157, 0.490196 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.686275 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0313726, 0.0313726, 0.0313726, 0.392157 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=5]
+size = 75
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+mainGameScene = ExtResource( 4 )
+
+[node name="ColorRect" parent="." index="0"]
+margin_right = 1280.0
+margin_bottom = 721.0
+
+[node name="MarginContainer" parent="." index="1"]
+margin_left = -6.0
+margin_right = 1260.0
+margin_bottom = 711.0
+custom_constants/margin_right = 200
+custom_constants/margin_top = 75
+custom_constants/margin_left = 200
+custom_constants/margin_bottom = 100
+
+[node name="VBoxContainer" parent="MarginContainer" index="0"]
+margin_left = 200.0
+margin_top = 75.0
+margin_right = 1066.0
+margin_bottom = 611.0
+
+[node name="Label" parent="MarginContainer/VBoxContainer" index="0"]
+margin_right = 866.0
+margin_bottom = 303.0
+custom_fonts/font = SubResource( 1 )
+text = "SpaceWarZ
+ "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="1"]
+margin_top = 307.0
+margin_right = 866.0
+margin_bottom = 536.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" index="0"]
+margin_right = 866.0
+margin_bottom = 99.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 50
+custom_constants/margin_left = 50
+
+[node name="NewGameButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer" index="0"]
+margin_left = 50.0
+margin_right = 816.0
+margin_bottom = 99.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+text = "New Game"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" index="1"]
+margin_top = 129.0
+margin_right = 866.0
+margin_bottom = 229.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 50
+custom_constants/margin_left = 50
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2" index="0"]
+margin_left = 50.0
+margin_right = 816.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+text = "Made By DAD"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 5 )
+autoplay = true
+
+[node name="SSFONTGAME" type="Sprite" parent="." index="3"]
+position = Vector2( 647.853, 292.618 )
+texture = ExtResource( 6 )
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/NewGameButton" to="." method="_on_NewGameButton_button_up"]
